@@ -6,6 +6,10 @@
 #ifndef _VECTORDOUBLECLASS_
 #define _VECTORDOUBLECLASS_
 
+#include <iostream>
+
+using namespace std;
+
 class VectorDouble
 {
     private:
@@ -52,6 +56,12 @@ class VectorDouble
         VectorDouble operator*(const VectorDouble& inVector);
         VectorDouble operator*(const double& alpha);
         VectorDouble operator^(const VectorDouble& inVector);
+        //Non member operator
+        friend ostream& operator<<(ostream& os, const VectorDouble& inVector);
 };
+
+// Non member operator
+ostream& operator<<(ostream& os, const VectorDouble& inVector);
+double dot(const VectorDouble& firstVector, const VectorDouble& secondVector);
 
 #endif /* _VECTORDOUBLECLASS_ */

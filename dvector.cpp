@@ -5,7 +5,6 @@
 */
 
 #include "dvector.h"
-#include <iostream>
 #include <cassert>
 #include <cstdlib>
 #include <cmath>
@@ -335,6 +334,33 @@ VectorDouble VectorDouble::operator++(int)
     return tempVector;
 }
 
+/* Non member functions */
+ostream& operator<<(ostream& os, const VectorDouble& inVector)
+{
+    for(int i = 0; i < inVector.getSize(); ++i)
+    {
+        os << inVector.getEntry(i);
+    }
+
+    return os;
+}
+
+double dot(const VectorDouble& firstVector, const VectorDouble& secondVector)
+{
+    int i;
+    double product(0.0);
+    double output;
+
+    assert(firstVector.getSize() == secondVector.getSize());
+
+    for(i = 0; i < firstVector.getSize(); ++i)
+    {
+        product = firstVector.getEntry(i) * secondVector.getEntry(i);
+        output += product;
+    }
+
+    return output;
+}
 #if 0
 double* allocate(int vectorLength)
 {
