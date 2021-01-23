@@ -31,8 +31,8 @@ class Matrix
         //member methods
         int getRows(void) const;
         int getCols(void) const;
-        int getEntries(void) const;
-        void setEntry(const int& rowIndex, const int& colIndex, double& input);
+        double getEntries(const int& rowIndex, const int& colIndex) const;
+        void setEntries(const int& rowIndex, const int& colIndex, double& input);
         void zeros(void) const;
         void ones(void) const;
         void eye(void) const;
@@ -41,5 +41,5 @@ class Matrix
         void info(void) const;
 
 
-}
+};
 #endif /* _MATRIXDOUBLECLASS_ */

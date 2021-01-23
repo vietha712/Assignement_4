@@ -30,7 +30,7 @@ class VectorDouble
         // member methods
         int getSize(void) const;
         void setEntry(const int& index, const double& input);
-        int getEntry(const int& index) const;
+        double getEntry(const int& index) const;
         void zeros(void) const;
         void ones(void) const;
         void random(const int& lower, const int& upper) const;
@@ -38,7 +38,7 @@ class VectorDouble
         void print(void) const;
         void info(void) const;
 
-        //Operators
+        //Operators Entry Access
         double& operator() (const int& i); // set entry
         double operator() (const int& i) const;
         //Unary

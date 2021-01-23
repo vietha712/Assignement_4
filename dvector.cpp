@@ -75,7 +75,7 @@ void VectorDouble::setEntry(const int& index, const double& input)
     entries[index] = input;
 }
 
-int VectorDouble::getEntry(const int& index) const
+double VectorDouble::getEntry(const int& index) const
 {
     return entries[index];
 }
