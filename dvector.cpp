@@ -60,6 +60,10 @@ VectorDouble::VectorDouble(const VectorDouble& vector)
     }
 }
 
+VectorDouble::~VectorDouble()
+{
+    deallocate();
+}
 /**** Member methods ****/
 int VectorDouble::getSize(void) const
 {

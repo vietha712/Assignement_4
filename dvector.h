@@ -16,7 +16,7 @@ class VectorDouble
         double *entries;
         int vectorLength;
     public:
-        // mem utility function
+        // mem utility functions
         void allocate();
         void deallocate();
 
@@ -25,6 +25,7 @@ class VectorDouble
         VectorDouble(const int& vectorLength); //create a vector object of size size
         VectorDouble(const int& vectorLength, const double& inputValue); //create a vector with entries of value
         VectorDouble(const VectorDouble& vector); //copy constructor from vector v
+        ~VectorDouble();
 
         // member methods
         int getSize(void) const;
