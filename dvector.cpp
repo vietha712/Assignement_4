@@ -149,34 +149,49 @@ void VectorDouble::info(void) const
 /**** Operators ****/
 double& VectorDouble::operator() (const int& i)
 {
-    assert(i < 0);
+    assert(i >= 0);
 
     return entries[i];
 }
 
 double VectorDouble::operator() (const int& i) const
 {
-    assert(i < 0);
+    assert(i >= 0);
 
     return entries[i];
 }
 
-//Unary
-VectorDouble VectorDouble::operator=(const VectorDouble&) const
+//Binary op
+VectorDouble& VectorDouble::operator=(const VectorDouble& inVector)
 {
-    VectorDouble tempVector(vectorLength);
+    assert(vectorLength == inVector.getSize());
 
     for(int i = 0; i < vectorLength; ++i)
     {
-        tempVector(i) = entries[i];
+        entries[i]= inVector(i);
+    }
+
+    return *this;
+}
+
+//Unary
+VectorDouble VectorDouble::operator-() const
+{
+    VectorDouble tempVector(vectorLength);
+    tempVector.zeros();
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        tempVector(i) = -(entries[i]);
     }
 
     return tempVector;
 }
 
-VectorDouble VectorDouble::operator+(const VectorDouble&) const
+VectorDouble VectorDouble::operator+() const
 {
     VectorDouble tempVector(vectorLength);
+    tempVector.zeros();
 
     for(int i = 0; i < vectorLength; ++i)
     {
@@ -186,13 +201,24 @@ VectorDouble VectorDouble::operator+(const VectorDouble&) const
     return tempVector;
 }
 
-VectorDouble VectorDouble::operator-(const VectorDouble&) const
+VectorDouble& VectorDouble::operator++() //prefix
+{
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        ++(entries[i]);
+    }
+
+    return *this;
+}
+
+VectorDouble VectorDouble::operator++(int)
 {
     VectorDouble tempVector(vectorLength);
+    tempVector.zeros();
 
     for(int i = 0; i < vectorLength; ++i)
     {
-        tempVector(i) = -(entries[i]);
+        tempVector(i) = ++(entries[i]);
     }
 
     return tempVector;

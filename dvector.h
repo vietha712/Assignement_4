@@ -37,12 +37,14 @@ class VectorDouble
         double& operator() (const int& i); // set entry
         double operator() (const int& i) const;
         //Unary
-        VectorDouble operator=(const VectorDouble&) const;
-        VectorDouble operator+(const VectorDouble&) const;
-        VectorDouble operator-(const VectorDouble&) const;
-        VectorDouble operator=(const VectorDouble&) const;
-        VectorDouble operator+(const VectorDouble&) const;
-        VectorDouble operator-(const VectorDouble&) const;
+        VectorDouble operator+() const;
+        VectorDouble operator-() const;
+        VectorDouble& operator++(); // prefix ++v
+        VectorDouble operator++(int); // postfix v++
+        //Binary
+        VectorDouble& operator=(const VectorDouble& inVector);
+        VectorDouble& operator+=(const VectorDouble&) const;
+        VectorDouble& operator-=(const VectorDouble&) const;
 
 };
 
