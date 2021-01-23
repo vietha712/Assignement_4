@@ -168,10 +168,121 @@ VectorDouble& VectorDouble::operator=(const VectorDouble& inVector)
 
     for(int i = 0; i < vectorLength; ++i)
     {
-        entries[i]= inVector(i);
+        entries[i] = inVector(i);
     }
 
     return *this;
+}
+
+VectorDouble& VectorDouble::operator+=(const VectorDouble& inVector)
+{
+    assert(vectorLength == inVector.getSize());
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        entries[i] += inVector(i);
+    }
+
+    return *this;
+}
+
+VectorDouble& VectorDouble::operator-=(const VectorDouble& inVector)
+{
+    assert(vectorLength == inVector.getSize());
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        entries[i] += inVector(i);
+    }
+
+    return *this;
+}
+
+VectorDouble& VectorDouble::operator*=(const VectorDouble& inVector)
+{
+    assert(vectorLength == inVector.getSize());
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        entries[i] *= inVector(i);
+    }
+
+    return *this;
+}
+
+VectorDouble& VectorDouble::operator*=(const double& alpha)
+{
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        entries[i] *= alpha;
+    }
+
+    return *this;
+}
+
+VectorDouble VectorDouble::operator+(const VectorDouble& inVector)
+{
+    VectorDouble temp;
+    temp.zeros();
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        temp(i) = entries[i] + inVector(i);
+    }
+
+    return temp;
+}
+
+VectorDouble VectorDouble::operator-(const VectorDouble& inVector)
+{
+    VectorDouble temp;
+    temp.zeros();
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        temp(i) = entries[i] - inVector(i);
+    }
+
+    return temp;
+}
+
+VectorDouble VectorDouble::operator*(const VectorDouble& inVector)
+{
+    VectorDouble temp;
+    temp.zeros();
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        temp(i) = entries[i] * inVector(i);
+    }
+
+    return temp;
+}
+
+VectorDouble VectorDouble::operator*(const double& alpha)
+{
+    VectorDouble temp;
+    temp.zeros();
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        temp(i) = entries[i] * alpha;
+    }
+
+    return temp;
+}
+
+VectorDouble VectorDouble::operator^(const VectorDouble& inVector)
+{
+    VectorDouble temp;
+    temp.zeros();
+
+    for(int i = 0; i < vectorLength; ++i)
+    {
+        temp(i) = entries[i] * inVector(i);
+    }
+
+    return temp;
 }
 
 //Unary

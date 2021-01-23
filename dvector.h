@@ -43,36 +43,15 @@ class VectorDouble
         VectorDouble operator++(int); // postfix v++
         //Binary
         VectorDouble& operator=(const VectorDouble& inVector);
-        VectorDouble& operator+=(const VectorDouble&) const;
-        VectorDouble& operator-=(const VectorDouble&) const;
-
+        VectorDouble& operator+=(const VectorDouble& inVector);
+        VectorDouble& operator-=(const VectorDouble& inVector);
+        VectorDouble& operator*=(const VectorDouble& inVector);
+        VectorDouble& operator*=(const double& alpha);
+        VectorDouble operator+(const VectorDouble& inVector);
+        VectorDouble operator-(const VectorDouble& inVector);
+        VectorDouble operator*(const VectorDouble& inVector);
+        VectorDouble operator*(const double& alpha);
+        VectorDouble operator^(const VectorDouble& inVector);
 };
-
-#if 0
-double* allocate(int vectorLength);
-
-void deallocate(double* vector);
-
-void random(double* vector, int vectorLength);
-
-void zeros(double* vector, int vectorLength);
-
-double& set(double* vector, int vectorLength, int entry);
-
-void print(double* vector, int vectorLength);
-
-void add(double *firstVector, 
-         int firstVectorLength, 
-         double *secondVector,
-         int secondVectorLength, 
-         double *outputVector, 
-         int outputVectorLength);
-
-double dot(double *firstVector, 
-           int firstVectorLength, 
-           double *secondVector, 
-           int secondVectorLength);
-
-#endif
 
 #endif /* _VECTORDOUBLECLASS_ */
