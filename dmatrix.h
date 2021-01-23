@@ -4,42 +4,42 @@
 * Date: 08/01/2021
 */
 
-double** allocate(const int& numCols, const int numRows);
+#ifndef _MATRIXDOUBLECLASS_
+#define _MATRIXDOUBLECLASS_
 
-void deallocate(double** matrix, int numRows);
+class Matrix
+{
+    private:
+        double** entries;
+        int numRows;
+        int numCols;
+        int type;
+    public:
+        //mem utility functions
+        void allocate();
+        void deallocate();
 
-void random(double** matrix, int numRows, int numCols);
+        //Constructors
+        Matrix();
+        Matrix(const int& numRows, const int& numCols);
+        Matrix(const int& numRows,
+               const int& numCols,
+               const double& initValue);
+        Matrix(const Matrix& inputMatrix);
+        ~Matrix();
 
-void zeros(double** matrix, int numRows, int numCols);
+        //member methods
+        int getRows(void) const;
+        int getCols(void) const;
+        int getEntries(void) const;
+        void setEntry(const int& rowIndex, const int& colIndex, double& input);
+        void zeros(void) const;
+        void ones(void) const;
+        void eye(void) const;
+        void random(const int& lower, const int& upper) const;
+        void print(void) const;
+        void info(void) const;
 
-void print(double** matrix, int numRows, int numCols);
 
-double det(int matrixDimension, double** matrix);
-
-void add(double **firstMatrix,
-         int firstMatrixRows,
-         int firstMatrixCols,
-         double **secondMatrix,
-         int secondMatrixRows,
-         int secondMatrixCols,
-         double **outputMatrix, 
-         int outputMatrixRows,
-         int outputMatrixCols);
-
-void mult(double **firstMatrix,
-          int firstMatrixRows,
-          int firstMatrixCols,
-          double **secondMatrix,
-          int secondMatrixRows,
-          int secondMatrixCols,
-          double **outputMatrix, 
-          int outputMatrixRows,
-          int outputMatrixCol);
-
-void mult(double **firstMatrix,
-          int firstMatrixRows,
-          int firstMatrixCols,
-          double *vector,
-          int vectorLength,
-          double *output, 
-          int outputLength);
+}
+#endif /* _MATRIXDOUBLECLASS_ */
