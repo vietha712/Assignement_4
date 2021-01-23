@@ -25,14 +25,14 @@ OBJ_FILES := $(OUTPUT_PATH)/dmatrix.o $(OUTPUT_PATH)/dvector.o
 #OUTPUT_PATH/%.o: %.c
 #	$(CC) -c $(CC_OPT) $(INCLUDES) $< -o $@
 
-build: $(PROJ).cpp $(OBJ_FILES) build-dir
+build: $(PROJ).cpp $(OBJ_FILES) 
 	@echo "Compiling $(PROJ).cpp"
 	@$(CC) $(CC_OPT) -I$(INC_PATH) $(OBJ_FILES) $(PROJ).cpp -o $(OUTPUT_PATH)/$(PROJ).exe 
 
 $(OUTPUT_PATH)/dvector.o: dvector.cpp
 	@$(CC) -c $(CC_OPT) -I$(INC_PATH) $< -o $(OUTPUT_PATH)/dvector.o
 
-$(OUTPUT_PATH)/dmatrix.o: dmatrix.cpp
+$(OUTPUT_PATH)/dmatrix.o: dmatrix.cpp build-dir
 	@$(CC) -c $(CC_OPT) -I$(INC_PATH) $< -o $(OUTPUT_PATH)/dmatrix.o
 
 build-dir:

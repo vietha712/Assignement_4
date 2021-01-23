@@ -7,7 +7,11 @@
 #ifndef _MATRIXDOUBLECLASS_
 #define _MATRIXDOUBLECLASS_
 
-class Matrix
+#include <iostream>
+
+using namespace std;
+
+class MatrixDouble
 {
     private:
         double** entries;
@@ -20,13 +24,13 @@ class Matrix
         void deallocate();
 
         //Constructors
-        Matrix();
-        Matrix(const int& numRows, const int& numCols);
-        Matrix(const int& numRows,
+        MatrixDouble();
+        MatrixDouble(const int& numRows, const int& numCols);
+        MatrixDouble(const int& numRows,
                const int& numCols,
                const double& initValue);
-        Matrix(const Matrix& inputMatrix);
-        ~Matrix();
+        MatrixDouble(const MatrixDouble& inputMatrix);
+        ~MatrixDouble();
 
         //member methods
         int getRows(void) const;
@@ -40,6 +44,31 @@ class Matrix
         void print(void) const;
         void info(void) const;
 
-
+        //Entry access
+        double& operator() (const int& rowIndx, const int& colIndx);
+        double operator() (const int& rowIndx, const int& colIndx) const;
+        //Unary
+        MatrixDouble operator+() const;
+        MatrixDouble operator-() const;
+        MatrixDouble& operator++(); // prefix
+        MatrixDouble operator++(int); // postfix
+        //Binary
+        MatrixDouble& operator=(const MatrixDouble& inMatrix);
+        MatrixDouble& operator+=(const MatrixDouble& inMatrix);
+        MatrixDouble& operator-=(const MatrixDouble& inMatrix);
+        MatrixDouble& operator*=(const MatrixDouble& inMatrix);
+        MatrixDouble& operator*=(const double& alpha);
+        MatrixDouble operator+(const MatrixDouble& inMatrix);
+        MatrixDouble operator-(const MatrixDouble& inMatrix);
+        MatrixDouble operator*(const MatrixDouble& inMatrix);
+        MatrixDouble operator*(const double& alpha);
+        MatrixDouble operator^(const double& alpha);
+        MatrixDouble& transpose(const MatrixDouble& inMatrix);
+        //Non member operator
+        friend ostream& operator<<(ostream& os, const MatrixDouble& inMatrix);
 };
+
+//Non member operator
+ostream& operator<<(ostream& os, const MatrixDouble& inMatrix);
+
 #endif /* _MATRIXDOUBLECLASS_ */

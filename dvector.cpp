@@ -150,14 +150,14 @@ void VectorDouble::info(void) const
 /**** Operators ****/
 double& VectorDouble::operator() (const int& i)
 {
-    assert(i >= 0);
+    assert(i > -1);
 
     return entries[i];
 }
 
 double VectorDouble::operator() (const int& i) const
 {
-    assert(i >= 0);
+    assert(i > -1);
 
     return entries[i];
 }
@@ -280,7 +280,7 @@ VectorDouble VectorDouble::operator^(const VectorDouble& inVector)
 
     for(int i = 0; i < vectorLength; ++i)
     {
-        temp(i) = entries[i] * inVector(i);
+        temp(i) = (int)entries[i] ^ (int)inVector(i);
     }
 
     return temp;
